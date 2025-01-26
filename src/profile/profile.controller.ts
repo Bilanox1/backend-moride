@@ -13,12 +13,12 @@ import {
   Get,
 } from '@nestjs/common';
 import { CreateProfileDto } from './dto/profile.dto';
-import { AuthGuardMoride } from 'src/guard/auth.guard';
+import { AuthGuardMoride } from '../guard/auth.guard';
 import { ProfileService } from './profile.service';
 import { UpdateProfileDto } from './dto/profileUpdate.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { memoryStorage } from 'multer';
-import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
+import { CloudinaryService } from '../cloudinary/cloudinary.service';
 
 @Controller('profile')
 @UseGuards(AuthGuardMoride)

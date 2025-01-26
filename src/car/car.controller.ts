@@ -13,9 +13,9 @@ import {
 } from '@nestjs/common';
 import { CarService } from './car.service';
 import { CreateCarDto, UpdateCarDto } from './dto/car.dto';
-import { AuthGuardMoride } from 'src/guard/auth.guard';
-import { RolesGuard } from 'src/guard/driver.guard';
-import { Roles } from 'src/roles/roles.decorator';
+import { AuthGuardMoride } from '../guard/auth.guard';
+import { RolesGuard } from '../guard/driver.guard';
+import { Roles } from '../roles/roles.decorator';
 
 @Controller('car')
 @UseGuards(AuthGuardMoride)

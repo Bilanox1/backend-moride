@@ -3,7 +3,7 @@ import { Model } from 'mongoose';
 import * as bcryptjs from 'bcryptjs';
 import { CreateDto } from './dto/create.dto';
 import { JwtService } from '@nestjs/jwt';
-import { MailService } from 'src/mail/mail.service';
+import { MailService } from '../mail/mail.service';
 import { CodeDto } from './dto/code.dto';
 import { ConfigService } from '@nestjs/config';
 import { UpdatePasswordDto } from './dto/updatePassword';

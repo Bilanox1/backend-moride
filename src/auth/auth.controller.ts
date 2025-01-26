@@ -17,7 +17,7 @@ import { LoginDto } from './dto/login.dto';
 import { EmailDto } from './dto/email.dto';
 import { CodeDto } from './dto/code.dto';
 import { UpdatePasswordDto } from './dto/updatePassword';
-import { AuthGuardMoride } from 'src/guard/auth.guard';
+import { AuthGuardMoride } from '../guard/auth.guard';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')

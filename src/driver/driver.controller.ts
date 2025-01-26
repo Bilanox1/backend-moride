@@ -9,9 +9,9 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { DriverService } from './driver.service';
-import { AuthGuardMoride } from 'src/guard/auth.guard';
-import { Roles } from 'src/roles/roles.decorator';
-import { RolesGuard } from 'src/guard/driver.guard';
+import { AuthGuardMoride } from '../guard/auth.guard';
+import { Roles } from '../roles/roles.decorator';
+import { RolesGuard } from '../guard/driver.guard';
 import { CreateDriverDto } from './dto/driver.dto';
 import { UpdateDriverDto } from './dto/updqteDriver.dto';
 
