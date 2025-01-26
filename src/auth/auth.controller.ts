@@ -11,7 +11,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { ValidationPipe } from 'src/validation/validation.pipe';
+import { ValidationPipe } from '../validation/validation.pipe';
 import { CreateDto } from './dto/create.dto';
 import { LoginDto } from './dto/login.dto';
 import { EmailDto } from './dto/email.dto';
