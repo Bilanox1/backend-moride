@@ -27,8 +27,9 @@ import { ChatService } from './chat/chat.service';
     CloudinaryModule,
     BookingModule,
     WorkingHoursModule,
+    ChatModule,
   ],
   controllers: [AppController],
-  providers: [AppService ],
+  providers: [AppService, ChatGateway  ],
 })
 export class AppModule {}
