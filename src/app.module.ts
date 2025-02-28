@@ -17,7 +17,16 @@ import { ChatService } from './chat/chat.service';
 
 @Module({
   imports: [
-   
+    ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
+    DatabaseModule,
+    AuthModule,
+    MailModule,
+    ProfileModule,
+    DriverModule,
+    CarModule,
+    CloudinaryModule,
+    BookingModule,
+    WorkingHoursModule,
   ],
   controllers: [AppController],
   providers: [AppService ],
