@@ -25,6 +25,18 @@ export class Profile {
   userId: MongooseSchema.Types.ObjectId;
 
   @Prop({
+    type: String,
+    required: [true, "Le prenome d'utilisateur est requis"],
+  })
+  firstname: string;
+
+  @Prop({
+    type: String,
+    required: [true, "Le nom d'utilisateur est requis"],
+  })
+  lastname: string;
+
+  @Prop({
     type: {
       url: {
         type: String,

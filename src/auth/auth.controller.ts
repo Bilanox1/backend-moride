@@ -11,7 +11,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { ValidationPipe } from '../validation/validation.pipe';
 import { CreateDto } from './dto/create.dto';
 import { LoginDto } from './dto/login.dto';
 import { EmailDto } from './dto/email.dto';
@@ -24,8 +23,8 @@ import { AuthGuard } from '@nestjs/passport';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Get('/user/:id')
-  findAll(@Req() req: any, @Param('id', ValidationPipe) id: number): any {
+  @Get('/user')
+  findAll(@Req() req: any): any {
     return this.authService.getAll();
   }
 

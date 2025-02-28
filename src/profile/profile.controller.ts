@@ -28,6 +28,11 @@ export class ProfileController {
     private readonly CloudinaryService: CloudinaryService,
   ) {}
 
+  @Get('getProfiles')
+  async getProfiles() {
+    return await this.profileService.updateAllUsersWithProfileIds();
+  }
+
   @Get('get/me')
   async getProfile(@Req() req: any) {
     return this.profileService.getProfile(req.user._id);
@@ -38,6 +43,7 @@ export class ProfileController {
     @Body() profileData: CreateProfileDto,
     @Request() req: any,
   ) {
+    console.log(profileData);
     const user = req.user;
 
     const profile = await this.profileService.createProfile(
@@ -96,7 +102,6 @@ export class ProfileController {
     const url = await this.CloudinaryService.uploadFile(file);
     console.log(url);
 
-    const fileUrl = `http://localhost:3000/images/${file.filename}`;
     const data = {
       url: url.url,
       key: url.public_id,
