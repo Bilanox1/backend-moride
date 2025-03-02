@@ -2,7 +2,6 @@ import {
   Body,
   Controller,
   Get,
-  Param,
   Post,
   Put,
   Req,
@@ -106,7 +105,7 @@ export class AuthController {
 
     if (loginByGoole) {
       return res.redirect(
-        `https://bilal-ez-zaim.github.io/moride-front-end/welcome/page?token=${loginByGoole.token}`,
+        `https://moride-git-main-bilal-ez-zaims-projects.vercel.app/welcome/page?token=${loginByGoole.token}`,
       );
     }
   }
