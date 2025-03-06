@@ -51,7 +51,10 @@ export class BookingService {
         booking,
       };
     } catch (error) {
-      // Gestion des erreurs
+      console.error(error);
+      if (error instanceof BadRequestException) {
+        throw error;
+      }
       throw new InternalServerErrorException(
         'Une erreur est survenue lors de la création de la réservation.',
       );
@@ -174,7 +177,6 @@ export class BookingService {
     }
 
     const driverId = await this.driverService.getDriver(userId);
-    console.log(driverId);
 
     const isAlreadyApplied = booking.applicants.some(
       (applicant) => applicant.driverId.toString() === driverId.toString(),
@@ -205,10 +207,6 @@ export class BookingService {
     if (!booking) {
       throw new NotFoundException('Aucune réservation trouvée.');
     }
-
-    console.log(booking);
-    console.log(booking.userId);
-    console.log(userId);
 
     if (booking.userId.toString() !== userId.toString()) {
       throw new UnauthorizedException(
