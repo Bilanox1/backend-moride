@@ -12,7 +12,7 @@ import {
 import { CreatePricingDto } from './dto/create-pricing.dto';
 import { Request } from 'express';
 import { PricingService } from './pricing.service';
-import { AuthGuardMoride } from 'src/guard/auth.guard';
+import { AuthGuardMoride } from '../guard/auth.guard';
 
 @Controller('pricing')
 export class PricingController {
