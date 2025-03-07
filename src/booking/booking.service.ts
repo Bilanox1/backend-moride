@@ -74,7 +74,7 @@ export class BookingService {
       .find({ userId: id })
       .populate({
         path: 'applicants.driverId',
-        select: 'ratings rating',
+        select: 'ratings rating userId',
         populate: {
           path: 'profile',
           model: 'Profile',

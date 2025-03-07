@@ -97,6 +97,7 @@ export class Profile {
 
   @Prop({
     type: String,
+    default: '',
   })
   profileHighlight: string;
 
@@ -108,7 +109,6 @@ export class Profile {
         /^(https?:\/\/)?([\w\-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=.]+$/.test(url),
       message: 'URL de Facebook invalide.',
     },
-
     unique: true,
     sparse: true,
   })
@@ -122,7 +122,6 @@ export class Profile {
         /^(https?:\/\/)?([\w\-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=.]+$/.test(url),
       message: 'URL de LinkedIn invalide.',
     },
-
     unique: true,
     sparse: true,
   })
@@ -136,7 +135,6 @@ export class Profile {
         /^(https?:\/\/)?([\w\-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=.]+$/.test(url),
       message: 'URL de WhatsApp invalide.',
     },
-
     unique: true,
     sparse: true,
   })
@@ -150,7 +148,6 @@ export class Profile {
         /^(https?:\/\/)?([\w\-]+)+[\w\-\._~:/?#[\]@!$&'()*+,;=.]+$/.test(url),
       message: 'URL de Portfolio invalide.',
     },
-
     unique: true,
     sparse: true,
   })

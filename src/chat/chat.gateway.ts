@@ -65,14 +65,17 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   // Handle joining a room
   @SubscribeMessage('join_room')
-  joinRoom(client: Socket, data: { receiver?: string; roomname?: string }) {
+  joinRoom(
+    client: Socket,
+    data: { receiver?: string; sender?: string; roomname?: string },
+  ) {
     console.log(data.roomname);
-    if (data.receiver) {
+    if (data.receiver && data.sender) {
       const roomName: string = this.chatService.getRoomName(
-        this.senderId,
+        data.sender,
         data.receiver,
       );
-      
+
       client.join(roomName);
       console.log(`User joined room: ${roomName}`);
     } else {
@@ -86,26 +89,43 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   // Handle sending a message to a room
   @SubscribeMessage('send_message')
   async handleMessageByRoome(client: Socket, data: CreateChatDto) {
-    const roomName = this.chatService.getRoomName(this.senderId, data.receiver);
+    const roomName = this.chatService.getRoomName(data.sender, data.receiver);
+    console.log('))))))))))))))))))))))))))');
     console.log(data);
-
+    console.log('))))))))))))))))))))))))))');
     const msg = data.content;
-    data.sender = this.senderId;
     data.roomName = roomName;
 
     const newMsg = await this.chatService.addMessage(data);
-    console.log(newMsg)
+    console.log(newMsg);
 
-    this.server
-      .to(roomName)
-      .emit('receive_message', { newMsg });
+    this.server.to(roomName).emit('receive_message', { newMsg });
   }
 
   // Get contacts of the current user
   @SubscribeMessage('getContacts')
-  async getContacts(client: Socket, data: CreateChatDto) {
-    const contact = await this.chatService.getContacts(this.senderId);
-    client.emit('contactsList', contact);
+  async getContacts(client: Socket, sender: string) {
+    console.log('get contact');
+    console.log('Sender:', sender);
+    console.log('get contact');
+
+    try {
+      const contact = await this.chatService.getContacts(sender);
+      console.log('Fetched Contacts:', contact);
+
+      if (!contact) {
+        console.error(
+          '❌ chatService.getContacts() returned null or undefined.',
+        );
+        client.emit('contactsList', []);
+        return;
+      }
+
+      client.emit('contactsList', contact);
+    } catch (error) {
+      console.error('❌ Error fetching contacts:', error);
+      client.emit('contactsList', { error: 'Failed to fetch contacts' });
+    }
   }
 
   // Get messages for a specific room

@@ -6,14 +6,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: [
-      'https://accounts.google.com/',
-      'https://bilal-ez-zaim.github.io',
-      'https://moride-git-main-bilal-ez-zaims-projects.vercel.app',
-    ],
+    origin: ['http://localhost:5173'],
     methods: 'GET,POST,PUT,DELETE,PATCH',
     allowedHeaders: 'Content-Type, Authorization',
-    credentials: true,
+    credentials: true, // This should be true only if cookies or credentials are sent
   });
 
   app.useGlobalPipes(
@@ -27,7 +23,7 @@ async function bootstrap() {
   app.setGlobalPrefix('/api/v1');
   app.useWebSocketAdapter(new IoAdapter(app));
 
-  await app.listen(3000);
+  await app.listen(3000); 
   console.log(`🚀 Server running on http://localhost:3000`);
 }
 bootstrap();

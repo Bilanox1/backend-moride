@@ -19,7 +19,7 @@ export class CarService {
   /**
    * Créer une nouvelle voiture.
    */
-  async create(createCarDto: CreateCarDto, driverId: string): Promise<Car> {
+  async create(createCarDto: any, driverId: string): Promise<Car> {
     const existingDriver = await this.carModel.findOne({ driverId }).exec();
     if (existingDriver) {
       throw new BadRequestException(
