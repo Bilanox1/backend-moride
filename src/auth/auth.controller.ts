@@ -106,7 +106,7 @@ export class AuthController {
 
     if (loginByGoole) {
       return res.redirect(
-        `http://localhost:5173/welcome/page?token=${loginByGoole.token}`,
+        `https://moride.vercel.app/welcome/page?token=${loginByGoole.token}`,
       );
     }
   }
