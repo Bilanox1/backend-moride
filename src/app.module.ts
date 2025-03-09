@@ -11,9 +11,6 @@ import { CarModule } from './car/car.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { BookingModule } from './booking/booking.module';
 import { WorkingHoursModule } from './workingHours/working.module';
-import { ChatGateway } from './chat/chat.gateway';
-import { ChatModule } from './chat/chat.module';
-import { ChatService } from './chat/chat.service';
 import { PricingModule } from './Pricing/pricing.module';
 
 @Module({
@@ -28,10 +25,9 @@ import { PricingModule } from './Pricing/pricing.module';
     CloudinaryModule,
     BookingModule,
     WorkingHoursModule,
-    ChatModule,
     PricingModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ChatGateway],
+  providers: [AppService],
 })
 export class AppModule {}
